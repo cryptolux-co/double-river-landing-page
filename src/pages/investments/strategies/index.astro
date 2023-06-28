@@ -1,5 +1,40 @@
 ---
-import InvestmentLayout from "../../layouts/investment/InvestmentLayout.astro";
+import SectionLayout from "@layouts/SectionLayout.astro";
 ---
 
-<InvestmentLayout />
+<SectionLayout>
+  <div class="flex flex-col gap-3">
+    <div class="flex justify-center items-center gap-8">
+      <img src="/investment/photo-multi-strategy-dr-investment-.jpg" alt="About Us" class="w-2/5" />
+
+      <div class="flex flex-col gap-1">
+        <h1 class="font-bold text-2xl text-secondary-foreground tracking-wider">Multi-strategy</h1>
+
+        <p class="text-secondary-foreground">
+          Good opportunities are everywhere, and we don’t put limits on ourselves. We are just as
+          comfortable making investments in small Vietnamese companies as we are investing in the
+          largest global names. And whether those opportunities are in public shares, derivatives or
+          the FX markets, we are there.
+        </p>
+      </div>
+    </div>
+
+    <div class="flex justify-center items-center gap-8">
+      <div class="flex flex-col gap-1">
+        <h1 class="font-bold text-2xl text-secondary-foreground tracking-wider">Systematic</h1>
+
+        <p class="text-secondary-foreground">
+          Our investment strategies are quantitative, well- tested, and unemotional. Whether based
+          on novel deep learning algorithms or tried-and-tested statistical models, our systems
+          identify various kinds of market inefficiencies.
+        </p>
+      </div>
+
+      <img src="/investment/photo-systematic-dr-investment.jpg" alt="About Us" class="w-2/5" />
+    </div>
+  </div>
+
+  <div class="text-center py-6" slot="footer">
+    <span class="text-investments">2023 Double River Investments, LLC</span>
+  </div>
+</SectionLayout>

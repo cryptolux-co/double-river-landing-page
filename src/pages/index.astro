@@ -1,29 +1,12 @@
 ---
-import Layout from "../layouts/Layout.astro";
-
-const logos = [
-  {
-    name: "Investments",
-    src: "/logos/double-river-investments-isologo.svg",
-    alt: "Double River Investments",
-  },
-  {
-    name: "Impact",
-    src: "/logos/double-river-impact-isologo.svg",
-    alt: "Double River Impact",
-  },
-  {
-    name: "Capital",
-    src: "/logos/double-river-capital-isologo.svg",
-    alt: "Double River Capital",
-  },
-] as const satisfies readonly { name: string; src: string; alt: string }[];
+import Layout from "@layouts/MainLayout.astro";
+import { logos } from "@lib/sections";
 ---
 
 <Layout title="Double River">
   <main class="flex min-h-screen flex-col gap-12 justify-center items-center max-w-5xl mx-auto">
     <div class="text-center select-none">
-      <span class="">Welcome to</span>
+      <span>Welcome to</span>
       <h1 class="text-5xl tracking-extrawide font-cambriaMath small-caps">Double River</h1>
     </div>
 
@@ -71,6 +54,6 @@ const logos = [
       </p>
     </div>
 
-    <span class="text-secondary-foreground"> 2023 Double River, LLC</span>
+    <span class="text-secondary-foreground">2023 Double River, LLC</span>
   </main>
 </Layout>

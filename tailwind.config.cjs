@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Segoe UI", "sans-serif"],
+        sans: ["Segoe UI", ...require("tailwindcss/defaultTheme").fontFamily.sans],
         cambriaMath: ["Cambria Math", "serif"],
       },
       letterSpacing: {
@@ -17,12 +17,11 @@ module.exports = {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
-        primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
+        investments: {
+          DEFAULT: "hsl(var(--investments-primary))",
+          muted: "hsl(var(--investments-muted))",
         },
         secondary: {
-          DEFAULT: "hsl(var(--secondary))",
           foreground: "hsl(var(--secondary-foreground))",
         },
         destructive: {

@@ -1,5 +1,24 @@
 ---
-import InvestmentLayout from "@layouts/investment/InvestmentLayout.astro";
+import SectionLayout from "@layouts/SectionLayout.astro";
 ---
 
-<InvestmentLayout />
+<SectionLayout>
+  <div class="flex justify-center items-center gap-8">
+    <img src="/investment/photo-about-us-dr-investment.jpg" alt="About Us" class="w-2/5" />
+
+    <div class="flex flex-col gap-1">
+      <h1 class="font-bold text-2xl text-secondary-foreground tracking-wider">About Us</h1>
+
+      <p class="text-secondary-foreground">
+        For those in search of alpha, Double River Investments offers a quantitatively driven
+        approach, leveraging advanced models and systematic strategies to consistently deliver
+        results. We believe in the power of technology and data-driven insights, grounding our
+        investment decisions in thorough analysis and rigorous risk management techniques.
+      </p>
+    </div>
+  </div>
+
+  <div class="text-center py-6" slot="footer">
+    <span class="text-investments">2023 Double River Investments, LLC</span>
+  </div>
+</SectionLayout>

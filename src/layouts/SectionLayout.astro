@@ -1,0 +1,53 @@
+---
+import MainLayout from "@layouts/MainLayout.astro";
+import { cn } from "@utils/cn";
+import { sections } from "@lib/sections";
+
+const url = new URL(Astro.request.url);
+const currentSection = sections.find(({ path }) => url.pathname.startsWith(path));
+const currentPage = currentSection?.pages.find(({ path }) => url.pathname === path);
+---
+
+<MainLayout title={`Double River - ${currentSection}`}>
+  <main class="mx-auto pt-14 px-4 max-w-[100ch] min-h-screen flex flex-col">
+    <div class="flex flex-col gap-4">
+      <div class="flex items-center gap-4 justify-center">
+        <img src={currentSection?.logo.src} class="w-20 h-20" alt={currentSection?.logo.alt} />
+
+        <div class="flex items-center justify-center flex-col pointer-events-none select-none">
+          <span class="small-caps font-cambriaMath text-2xl tracking-widest">Double River</span>
+          <span class="small-caps font-cambriaMath text-sm tracking-extrawidest">
+            {currentSection?.logo.name}
+          </span>
+        </div>
+      </div>
+
+      <div class="flex items-center justify-center gap-2">
+        {
+          currentSection?.pages.map(({ label, path }) => {
+            return (
+              <a
+                class={cn(
+                  "rounded-[0.5rem] px-2.5 py-1 text-center text-lg font-medium",
+                  currentSection?.path === "/investments" && "text-investments",
+                  currentPage?.path === path &&
+                    currentSection?.path === "/investments" &&
+                    "bg-investments-muted",
+                )}
+                href={path}
+              >
+                {label}
+              </a>
+            );
+          })
+        }
+      </div>
+    </div>
+
+    <div class="py-12 flex-grow">
+      <slot />
+    </div>
+
+    <slot name="footer" />
+  </main>
+</MainLayout>
