@@ -1,81 +1,76 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
+import Layout from "../layouts/Layout.astro";
+
+const logos = [
+  {
+    name: "Investments",
+    src: "/logos/double-river-investments-isologo.svg",
+    alt: "Double River Investments",
+  },
+  {
+    name: "Impact",
+    src: "/logos/double-river-impact-isologo.svg",
+    alt: "Double River Impact",
+  },
+  {
+    name: "Capital",
+    src: "/logos/double-river-capital-isologo.svg",
+    alt: "Double River Capital",
+  },
+] as const satisfies readonly { name: string; src: string; alt: string }[];
 ---
 
-<Layout title="Welcome to Astro.">
-	<main>
-		<h1>Welcome to <span class="text-gradient">Astro</span></h1>
-		<p class="instructions">
-			To get started, open the directory <code>src/pages</code> in your project.<br />
-			<strong>Code Challenge:</strong> Tweak the "Welcome to Astro" message above.
-		</p>
-		<ul role="list" class="link-card-grid">
-			<Card
-				href="https://docs.astro.build/"
-				title="Documentation"
-				body="Learn how Astro works and explore the official API docs."
-			/>
-			<Card
-				href="https://astro.build/integrations/"
-				title="Integrations"
-				body="Supercharge your project with new frameworks and libraries."
-			/>
-			<Card
-				href="https://astro.build/themes/"
-				title="Themes"
-				body="Explore a galaxy of community-built starter themes."
-			/>
-			<Card
-				href="https://astro.build/chat/"
-				title="Community"
-				body="Come say hi to our amazing Discord community. ❤️"
-			/>
-		</ul>
-	</main>
-</Layout>
+<Layout title="Double River">
+  <main class="flex min-h-screen flex-col gap-12 justify-center items-center max-w-5xl mx-auto">
+    <div class="text-center select-none">
+      <span class="">Welcome to</span>
+      <h1 class="text-5xl tracking-extrawide font-cambriaMath small-caps">Double River</h1>
+    </div>
 
-<style>
-	main {
-		margin: auto;
-		padding: 1.5rem;
-		max-width: 60ch;
-	}
-	h1 {
-		font-size: 3rem;
-		font-weight: 800;
-		margin: 0;
-	}
-	.text-gradient {
-		background-image: var(--accent-gradient);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-size: 400%;
-		background-position: 0%;
-	}
-	.instructions {
-		line-height: 1.6;
-		margin: 1rem 0;
-		border: 1px solid rgba(var(--accent), 25%);
-		background-color: white;
-		padding: 1rem;
-		border-radius: 0.4rem;
-	}
-	.instructions code {
-		font-size: 0.875em;
-		font-weight: bold;
-		background: rgba(var(--accent), 12%);
-		color: rgb(var(--accent));
-		border-radius: 4px;
-		padding: 0.3em 0.45em;
-	}
-	.instructions strong {
-		color: rgb(var(--accent));
-	}
-	.link-card-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-		gap: 1rem;
-		padding: 0;
-	}
-</style>
+    <div class="flex gap-8 items-center select-none pointer-events-none">
+      {
+        logos.map(({ name, src, alt }) => (
+          <div class="flex flex-col items-center justify-center gap-2">
+            <img src={src} alt={alt} class="w-32" />
+            <div class="flex flex-col -space-y-1.5 text-center">
+              <span class="small-caps font-cambriaMath text-2xl tracking-widest">Double River</span>
+              <span class="small-caps font-cambriaMath text-sm tracking-extrawidest">{name}</span>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="grid grid-cols-2 grid-rows-2 gap-x-10">
+      <p>
+        Founded with the vision of realizing potential across global markets, Double River is a
+        multi-faceted financial institution committed to fostering growth and delivering sustainable
+        value. We house three distinct business units, each with a unique focus and strategy: Double
+        River Investments, Double River Impact, and Double River Capital.
+      </p>
+
+      <p>
+        Explore our site to learn more about each business unit, and discover how Double River can
+        help you navigate your financial journey. We invite you to join us in creating an abundant
+        future, shaped by responsible investments and positive impact.
+      </p>
+
+      <p>
+        At Double River, we are united by our unwavering commitment to excellence, integrity, and
+        innovation. We understand that the financial landscape is ever-evolving, and we continually
+        adapt to ensure our clients can navigate it confidently. Whether through data-driven
+        investment strategies, venture capital with a conscience, or effective capital placement
+        services, we aim to surpass our clients' expectations.
+      </p>
+
+      <p>
+        We understand that navigating global markets can be challenging, which is why we are here to
+        assist you every step of the way. Feel free to reach out to our dedicated teams for any
+        inquiries or additional information. Each business unit's page has a Contact Us section
+        where you may reach its relevant team members.
+      </p>
+    </div>
+
+    <span class="text-secondary-foreground"> 2023 Double River, LLC</span>
+  </main>
+</Layout>
