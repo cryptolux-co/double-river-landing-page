@@ -1,0 +1,20 @@
+---
+import { cva } from "class-variance-authority";
+
+export const heading1Variants = cva("font-bold text-secondary-foreground tracking-wider", {
+  variants: {
+    size: {
+      default: "text-2xl",
+      sm: "text-xl",
+      lg: "text-3xl",
+    },
+  },
+  defaultVariants: {
+    size: "default",
+  },
+});
+---
+
+<h1 class={heading1Variants()}>
+  <slot />
+</h1>

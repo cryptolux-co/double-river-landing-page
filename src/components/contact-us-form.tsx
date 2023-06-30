@@ -67,7 +67,7 @@ type Props = {
   section: "investment" | "capital" | "impact";
 };
 
-export const ContactUs: React.FC<Props> = ({ section }) => {
+export const ContactUsForm: React.FC<Props> = ({ section }) => {
   const form = useForm<FormSchema>({
     defaultValues: {
       acceptTerms: false,

@@ -1,11 +1,11 @@
 ---
 import SectionLayout from "@layouts/SectionLayout.astro";
-import { ContactUs } from "@components/contact-us.tsx";
-import Footer from "../../components/Footer.astro";
+import { ContactUsForm } from "@components/contact-us-form";
+import Footer from "@components/Footer.astro";
 ---
 
 <SectionLayout>
-  <ContactUs client:load section="investment" />
+  <ContactUsForm client:load section="investment" />
 
   <Footer section="investments" slot="footer" />
 </SectionLayout>

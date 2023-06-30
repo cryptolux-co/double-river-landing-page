@@ -1,5 +1,6 @@
 ---
 import { cn } from "../utils/cn";
+import { heading1Variants } from "./Heading1.astro";
 const svgs = {
   windmill: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 47.393 38.134" class="w-7 h-7">
               <path
@@ -36,20 +37,18 @@ const svgs = {
 `,
 };
 
+type Item = {
+  title: string;
+  svg: keyof typeof svgs;
+  description: string;
+};
 export type Props = {
   title: string;
-  itemOne: {
-    title: string;
-    svg: keyof typeof svgs;
-    description: string;
-  };
-  itemTwo: {
-    title: string;
-    svg: keyof typeof svgs;
-  };
-  reverse: boolean;
+  itemOne: Item;
+  itemTwo: Item;
+  reverse?: boolean;
 };
-const { title, itemOne, itemTwo, reverse } = Astro.props;
+const { title, itemOne, itemTwo, reverse = false } = Astro.props;
 const items = [itemOne, itemTwo];
 ---
 
@@ -62,7 +61,7 @@ const items = [itemOne, itemTwo];
     },
   )}
 >
-  <span class="text-xl font-bold wrap">{title}</span>
+  <span class={heading1Variants()}>{title}</span>
 
   <div class="flex max-w-md flex-col gap-8">
     {
@@ -71,7 +70,7 @@ const items = [itemOne, itemTwo];
           <div class="flex items-center gap-2">
             <Fragment set:html={svgs[items[index].svg]} />
 
-            <span class="text-xl font-bold">{items[index].title}</span>
+            <span class={heading1Variants({ size: "sm" })}>{items[index].title}</span>
           </div>
 
           <p class="text-lg text-black">{items[index].description}</p>

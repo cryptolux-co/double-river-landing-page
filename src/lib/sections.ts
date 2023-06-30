@@ -37,7 +37,7 @@ export const investmentsSection = {
       path: "/investments/contact-us",
     },
   ],
-} as const satisfies Section<"investments">;
+} satisfies Section<"investments">;
 
 export const capitalSection = {
   path: "/capital",
@@ -62,7 +62,7 @@ export const capitalSection = {
       path: "/capital/contact-us",
     },
   ],
-} as const satisfies Section<"capital">;
+} satisfies Section<"capital">;
 
 export const impactSection = {
   path: "/impact",
@@ -91,8 +91,9 @@ export const impactSection = {
       path: "/impact/contact-us",
     },
   ],
-} as const satisfies Section<"impact">;
+} satisfies Section<"impact">;
 
 export const logos = [investmentsSection.logo, capitalSection.logo, impactSection.logo] as const;
 
-export const sections = [investmentsSection, capitalSection, impactSection] as const;
+export const pages = [...investmentsSection.pages, ...capitalSection.pages, ...impactSection.pages];
+export const sections = [investmentsSection, capitalSection, impactSection];

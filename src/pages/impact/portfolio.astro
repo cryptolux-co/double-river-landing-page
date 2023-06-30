@@ -1,12 +1,13 @@
 ---
 import SectionLayout from "@layouts/SectionLayout.astro";
 import Footer from "@components/Footer.astro";
-import PortfolioCard from "../../components/PortfolioCard.astro";
+import PortfolioCard from "@components/PortfolioCard.astro";
+import { heading1Variants } from "@components/Heading1.astro";
 ---
 
 <SectionLayout>
   <div class="text-center flex flex-col gap-1.5 justify-center items-center">
-    <h1 class="text-2xl text-muted-foreground">Portfolio</h1>
+    <h1 class={heading1Variants()}>Portfolio</h1>
 
     <p class="text-lg text-muted-foreground">
       Welcome to Double River Impact, our dedicated unit focused on making a positive social and
