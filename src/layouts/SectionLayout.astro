@@ -12,10 +12,16 @@ const currentPage = currentSection?.pages.find(({ path }) => url.pathname === pa
   <main class="mx-auto pt-14 px-6 max-w-[100ch] min-h-screen flex flex-col">
     <div class="flex flex-col gap-4">
       <div class="flex items-center gap-4 justify-center pointer-events-none select-none">
-        <img src={currentSection?.logo.src} class="w-20 h-20" alt={currentSection?.logo.alt} />
+        <img
+          src={currentSection?.logo.src}
+          class="w-16 h-16 sm:w-20 sm:h-20"
+          alt={currentSection?.logo.alt}
+        />
 
         <div class="flex items-center justify-center flex-col">
-          <span class="small-caps font-cambriaMath text-2xl tracking-widest">Double River</span>
+          <span class="small-caps font-cambriaMath text-xl sm:text-2xl tracking-widest"
+            >Double River</span
+          >
           <span class="small-caps font-cambriaMath text-sm tracking-extrawidest">
             {currentSection?.logo.name}
           </span>
@@ -27,14 +33,17 @@ const currentPage = currentSection?.pages.find(({ path }) => url.pathname === pa
           currentSection?.pages.map(({ label, path }) => {
             return (
               <a
-                class={cn("rounded-[0.5rem] px-2.5 py-1 text-center text-lg font-medium", {
-                  "text-investments": currentSection?.path === "/investments",
-                  "bg-investments-muted":
-                    currentPage?.path === path && currentSection?.path === "/investments",
-                  "text-capital": currentSection?.path === "/capital",
-                  "bg-capital-muted":
-                    currentPage?.path === path && currentSection?.path === "/capital",
-                })}
+                class={cn(
+                  "rounded-[0.5rem] px-2.5 py-1 text-center text-sm font-medium sm:text-lg",
+                  {
+                    "text-investments": currentSection?.path === "/investments",
+                    "bg-investments-muted":
+                      currentPage?.path === path && currentSection?.path === "/investments",
+                    "text-capital": currentSection?.path === "/capital",
+                    "bg-capital-muted":
+                      currentPage?.path === path && currentSection?.path === "/capital",
+                  },
+                )}
                 href={path}
               >
                 {label}

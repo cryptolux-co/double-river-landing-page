@@ -5,9 +5,9 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Label } from "@components/label";
 import { Input } from "@components/input";
 import { Textarea } from "@components/textarea";
-import { SendIcon } from "lucide-react";
 import { cn } from "@utils/cn";
 import { Checkbox } from "@components/checkbox";
+import { PaperPlaneIcon } from "@radix-ui/react-icons";
 
 const Error: React.FC<
   Omit<React.ComponentPropsWithoutRef<"span">, "children"> & {
@@ -79,7 +79,7 @@ export const ContactUs: React.FC<Props> = ({ section }) => {
   return (
     <form
       onSubmit={form.handleSubmit((data) => console.log(data))}
-      className="mx-auto flex w-1/2 flex-col gap-4"
+      className="mx-auto flex w-11/12 flex-col gap-4 md:w-1/2"
     >
       <span className="small-caps text-2xl text-gray-900">Contact us</span>
 
@@ -158,15 +158,15 @@ export const ContactUs: React.FC<Props> = ({ section }) => {
       <button
         type="submit"
         className={cn(
-          "flex items-center justify-center gap-2 rounded-xl px-4 py-2 font-medium text-white",
+          "flex items-center justify-center gap-2 rounded-xl px-4 py-2 text-white transition-shadow duration-200 hover:shadow-md",
           {
-            "bg-investments": section === "investment",
-            "bg-capital": section === "capital",
+            "bg-investments hover:bg-[#004775]": section === "investment",
+            "bg-[#F6D808] text-black hover:bg-[#E8CA08]": section === "capital",
             "bg-impact": section === "impact",
           },
         )}
       >
-        Send <SendIcon className="h-5 w-5" />
+        Send <PaperPlaneIcon className="h-4 w-4" />
       </button>
     </form>
   );

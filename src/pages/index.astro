@@ -14,18 +14,20 @@ import { logos } from "@lib/sections";
       </h1>
     </div>
 
-    <div class="flex flex-wrap items-center gap-8 justify-center select-none pointer-events-none">
+    <div class="flex flex-wrap items-center gap-8 justify-center">
       {
-        logos.map(({ name, src, alt }) => (
-          <div class="flex flex-col items-center justify-center gap-2">
-            <img src={src} alt={alt} class="w-12 md:w-20 lg:w-32" />
+        logos.map(({ name, src, alt, path }) => (
+          <a class="flex flex-col items-center justify-center gap-2" href={path}>
+            <img src={src} alt={alt} class="pointer-events-none w-12 select-none md:w-20 lg:w-32" />
+
             <div class="flex flex-col -space-y-1.5 text-center">
               <span class="small-caps font-cambriaMath text-sm tracking-widest md:text-2xl">
                 Double River
               </span>
+
               <span class="small-caps font-cambriaMath text-sm tracking-extrawidest">{name}</span>
             </div>
-          </div>
+          </a>
         ))
       }
     </div>

@@ -5,6 +5,7 @@ type Section<T extends string> = {
     name: string;
     src: string;
     alt: string;
+    path: `/${T}`;
   };
   pages: readonly { label: string; path: `/${T}` | `/${T}/${string}` }[];
 };
@@ -16,6 +17,7 @@ export const investmentsSection = {
     name: "Investments",
     src: "/logos/double-river-investments-isologo.svg",
     alt: "Double River Investments",
+    path: "/investments",
   },
   pages: [
     {
@@ -44,6 +46,7 @@ export const capitalSection = {
     name: "Capital",
     src: "/logos/double-river-capital-isologo.svg",
     alt: "Double River Capital",
+    path: "/capital",
   },
   pages: [
     {
@@ -68,6 +71,7 @@ export const impactSection = {
     name: "Impact",
     src: "/logos/double-river-impact-isologo.svg",
     alt: "Double River Impact",
+    path: "/impact",
   },
   pages: [
     {
