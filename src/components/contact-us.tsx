@@ -160,9 +160,9 @@ export const ContactUs: React.FC<Props> = ({ section }) => {
         className={cn(
           "flex items-center justify-center gap-2 rounded-xl px-4 py-2 text-white transition-shadow duration-200 hover:shadow-md",
           {
-            "bg-investments hover:bg-[#004775]": section === "investment",
-            "bg-[#F6D808] text-black hover:bg-[#E8CA08]": section === "capital",
-            "bg-impact": section === "impact",
+            "bg-investments hover:bg-[hsl(204,100%,23%)]": section === "investment",
+            "bg-[hsl(52,94%,50%)] text-black hover:bg-[hsl(52,93%,47%)]": section === "capital",
+            "bg-[hsl(148,26%,30%)] hover:bg-[hsl(148,26%,27%)]": section === "impact",
           },
         )}
       >

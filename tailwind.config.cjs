@@ -25,6 +25,10 @@ module.exports = {
           DEFAULT: "hsl(var(--capital-primary))",
           muted: "hsl(var(--capital-muted))",
         },
+        impact: {
+          DEFAULT: "hsl(var(--impact-primary))",
+          muted: "hsl(var(--impact-muted))",
+        },
         secondary: {
           foreground: "hsl(var(--secondary-foreground))",
         },

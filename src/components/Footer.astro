@@ -12,6 +12,10 @@ const { section } = Astro.props;
       "text-capital": section === "capital",
       "text-investments": section === "investments",
       "text-impact": section === "impact",
-    })}>2023 Double River Investments, LLC</span
+    })}
   >
+    2023 Double River {
+      section === "capital" ? "Capital" : section === "investments" ? "Investments" : "Impact"
+    }, LLC
+  </span>
 </div>

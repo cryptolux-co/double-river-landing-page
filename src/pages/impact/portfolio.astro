@@ -1,0 +1,63 @@
+---
+import SectionLayout from "@layouts/SectionLayout.astro";
+import Footer from "@components/Footer.astro";
+import PortfolioCard from "../../components/PortfolioCard.astro";
+---
+
+<SectionLayout>
+  <div class="text-center flex flex-col gap-1.5 justify-center items-center">
+    <h1 class="text-2xl text-muted-foreground">Portfolio</h1>
+
+    <p class="text-lg text-muted-foreground">
+      Welcome to Double River Impact, our dedicated unit focused on making a positive social and
+      environmental impact through venture capital investments. We believe in the power of capital
+      to drive change, and our mission is to support and empower innovative ideas that create a
+      sustainable future.
+    </p>
+  </div>
+
+  <div class="flex flex-col gap-8 py-6 text-[hsl(326,4%,33%)]">
+    <PortfolioCard
+      title="Clean Energy Solutions"
+      itemOne={{
+        title: "SolarTech",
+        svg: "windmill",
+        description:
+          "A renewable energy company that designs and installs affordable solar power solutions for\n" +
+          "rural communities. By providing clean and reliable energy access, SolarTech is empowering\n" +
+          "communities while reducing reliance on fossil fuels.",
+      }}
+      itemTwo={{
+        title: "WindGen",
+        svg: "solarPanel",
+        description:
+          "A leading provider of wind energy solutions, harnessing the power of wind to generate\n" +
+          "sustainable electricity. Their innovative turbine designs have significantly increased\n" +
+          "energy efficiency and reduced the carbon footprint.",
+      }}
+    />
+
+    <PortfolioCard
+      title="Social Equality Initiatives"
+      itemOne={{
+        title: "EduConnect",
+        svg: "eduConnect",
+        description:
+          "A technology platform connecting underserved students with online educational resources and\n" +
+          "mentorship programs. EduConnect is bridging the educational gap and empowering students to\n" +
+          "reach their full potential",
+      }}
+      itemTwo={{
+        title: "EmpowerHer",
+        svg: "empowerHer",
+        description:
+          "A social enterprise focused on empowering women in developing countries through\n" +
+          "skill-building programs, entrepreneurship support, and access to microloans. EmpowerHer is\n" +
+          "fostering economic independence and gender equality.",
+      }}
+      reverse={true}
+    />
+  </div>
+
+  <Footer section="impact" slot="footer" />
+</SectionLayout>

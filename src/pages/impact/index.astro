@@ -1,0 +1,21 @@
+---
+import SectionLayout from "@layouts/SectionLayout.astro";
+import ImageCard from "@components/ImageCard.astro";
+import ImageCardsContainer from "@components/ImageCardsContainer.astro";
+import Footer from "../../components/Footer.astro";
+---
+
+<SectionLayout>
+  <ImageCardsContainer>
+    <ImageCard imageSrc="/impact/photo-about-us-dr-impact.jpg" imageAlt="About Us" title="About Us">
+      <p class="text-secondary-foreground" slot="description">
+        Double River Impact embodies our commitment to making a positive social and environmental
+        change. Through venture capital investments, we aim to drive significant transformation and
+        foster innovation. Here, we channel the power of capital towards creating a sustainable
+        future, empowering ideas that make a difference.
+      </p>
+    </ImageCard>
+  </ImageCardsContainer>
+
+  <Footer section="impact" slot="footer" />
+</SectionLayout>

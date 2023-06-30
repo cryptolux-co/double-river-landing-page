@@ -1,0 +1,87 @@
+---
+import SectionLayout from "@layouts/SectionLayout.astro";
+import ImageCard from "@components/ImageCard.astro";
+import ImageCardsContainer from "@components/ImageCardsContainer.astro";
+import Footer from "@components/Footer.astro";
+---
+
+<SectionLayout>
+  <ImageCardsContainer>
+    <ImageCard
+      title="Empowering Rural Communities through Clean Energy"
+      imageSrc="/impact/photo-clean-energy-dr-impact.jpg"
+      imageAlt="Four modern windmills in a field"
+    >
+      <p class="text-secondary-foreground" slot="description">
+        In collaboration with our impact venture, SolarTech, we successfully brought affordable and
+        reliable solar power solutions to rural communities in developing regions. Through our
+        investment and support, SolarTech has installed solar panels in over 100 villages, providing
+        clean energy access to thousands of households. This has not only improved the quality of
+        life for residents but also reduced their dependency on fossil fuels, leading to a
+        significant reduction in carbon emissions.
+      </p>
+    </ImageCard>
+
+    <ImageCard
+      title="Briding the Education Gap"
+      imageSrc="/impact/photo-education-dr-impact.jpg"
+      imageAlt="A teacher and a student in a classroom"
+      reverse={true}
+    >
+      <p class="text-secondary-foreground" slot="description">
+        One of our portfolio ventures, EduConnect, has been instrumental in bridging the education
+        gap for underserved students. Through their online platform, they provide access to
+        educational resources, virtual classrooms, and mentorship programs. We are proud to share
+        that EduConnect has reached over 10,000 students in remote areas, empowering them with
+        quality education and increasing their chances of a brighter future.
+      </p>
+    </ImageCard>
+
+    <ImageCard
+      title="Empowering Women Entrepreneurs"
+      imageSrc="/impact/photo-women-empowering-dr-impact.jpg"
+      imageAlt="Four women walking down a muddy road"
+    >
+      <p class="text-secondary-foreground" slot="description">
+        Our impact venture, EmpowerHer, focuses on empowering women in developing countries by
+        providing them with training, mentorship, and microloans to start their own businesses. To
+        date, EmpowerHer has supported over 500 women entrepreneurs, helping them establish
+        sustainable enterprises and gain financial independence. Through their efforts, these women
+        have created job opportunities within their communities and contributed to local economic
+        growth.
+      </p>
+    </ImageCard>
+
+    <ImageCard
+      title="Revolutionizing Healthcare Access"
+      imageSrc="/impact/photo-healthcare-dr-impact.jpg"
+      imageAlt="A nurse shaking hands with a patient"
+      reverse={true}
+    >
+      <p class="text-secondary-foreground" slot="description">
+        TeleHealth Solutions, one of our portfolio ventures, has revolutionized healthcare access in
+        remote areas. Their digital health platform enables patients to connect with doctors
+        remotely, access medical consultations, and receive prescriptions through their mobile
+        devices. Through our support, TeleHealth Solutions has expanded its reach to underserved
+        regions, providing healthcare services to thousands of individuals who previously had
+        limited access to medical care.
+      </p>
+    </ImageCard>
+
+    <ImageCard
+      title="Sustainable Agriculture for Food Security"
+      imageSrc="/impact/photo-agriculture-dr-impact.jpg"
+      imageAlt="Two hands holding a handful of red grapes"
+    >
+      <p class="text-secondary-foreground" slot="description">
+        Our venture, AgroTech Solutions, has been at the forefront of sustainable agriculture
+        practices. Through their innovative use of technology and precision farming techniques, they
+        have helped local farmers optimize crop yields, reduce water consumption, and minimize the
+        use of chemical fertilizers. This not only ensures food security but also promotes
+        environmental sustainability and the preservation of natural resources.
+      </p>
+    </ImageCard>
+  </ImageCardsContainer>
+
+  <Footer section="impact" slot="footer" />
+</SectionLayout>

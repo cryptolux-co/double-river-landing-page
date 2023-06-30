@@ -78,9 +78,21 @@ export const impactSection = {
       label: "About",
       path: "/impact",
     },
+    {
+      label: "Portfolio",
+      path: "/impact/portfolio",
+    },
+    {
+      label: "Stories",
+      path: "/impact/stories",
+    },
+    {
+      label: "Contact Us",
+      path: "/impact/contact-us",
+    },
   ],
 } as const satisfies Section<"impact">;
 
 export const logos = [investmentsSection.logo, capitalSection.logo, impactSection.logo] as const;
 
-export const sections = [investmentsSection, capitalSection] as const;
+export const sections = [investmentsSection, capitalSection, impactSection] as const;
