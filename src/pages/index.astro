@@ -4,19 +4,25 @@ import { logos } from "@lib/sections";
 ---
 
 <Layout title="Double River">
-  <main class="flex min-h-screen flex-col gap-12 justify-center items-center max-w-5xl mx-auto">
+  <main
+    class="flex min-h-screen flex-col gap-12 justify-center items-center max-w-5xl mx-auto px-8 py-6"
+  >
     <div class="text-center select-none">
       <span>Welcome to</span>
-      <h1 class="text-5xl tracking-extrawide font-cambriaMath small-caps">Double River</h1>
+      <h1 class="lg:text-5xl md:text-3xl text-2xl tracking-extrawide font-cambriaMath small-caps">
+        Double River
+      </h1>
     </div>
 
-    <div class="flex gap-8 items-center select-none pointer-events-none">
+    <div class="flex flex-wrap items-center gap-8 justify-center select-none pointer-events-none">
       {
         logos.map(({ name, src, alt }) => (
           <div class="flex flex-col items-center justify-center gap-2">
-            <img src={src} alt={alt} class="w-32" />
+            <img src={src} alt={alt} class="w-12 md:w-20 lg:w-32" />
             <div class="flex flex-col -space-y-1.5 text-center">
-              <span class="small-caps font-cambriaMath text-2xl tracking-widest">Double River</span>
+              <span class="small-caps font-cambriaMath text-sm tracking-widest md:text-2xl">
+                Double River
+              </span>
               <span class="small-caps font-cambriaMath text-sm tracking-extrawidest">{name}</span>
             </div>
           </div>
@@ -24,7 +30,7 @@ import { logos } from "@lib/sections";
       }
     </div>
 
-    <div class="grid grid-cols-2 grid-rows-2 gap-x-10">
+    <div class="grid md:grid-cols-2 md:grid-rows-2 gap-x-10 gap-y-8">
       <p>
         Founded with the vision of realizing potential across global markets, Double River is a
         multi-faceted financial institution committed to fostering growth and delivering sustainable

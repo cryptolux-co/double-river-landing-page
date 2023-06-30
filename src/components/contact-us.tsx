@@ -1,5 +1,5 @@
 import type React from "react";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Label } from "@components/label";
@@ -7,6 +7,7 @@ import { Input } from "@components/input";
 import { Textarea } from "@components/textarea";
 import { SendIcon } from "lucide-react";
 import { cn } from "@utils/cn";
+import { Checkbox } from "@components/checkbox";
 
 const Error: React.FC<
   Omit<React.ComponentPropsWithoutRef<"span">, "children"> & {
@@ -55,6 +56,10 @@ const formSchema = z.object({
     .trim()
     .min(2, "Your message must be at least 2 characters long")
     .max(1000, "Your message must be less than 1000 characters long"),
+  acceptTerms: z.boolean().refine((accepted) => accepted, {
+    message: "You must accept the terms and conditions",
+    path: ["acceptTerms"],
+  }),
 });
 type FormSchema = z.infer<typeof formSchema>;
 
@@ -64,6 +69,9 @@ type Props = {
 
 export const ContactUs: React.FC<Props> = ({ section }) => {
   const form = useForm<FormSchema>({
+    defaultValues: {
+      acceptTerms: false,
+    },
     mode: "onSubmit",
     resolver: zodResolver(formSchema),
   });
@@ -114,6 +122,38 @@ export const ContactUs: React.FC<Props> = ({ section }) => {
         <Textarea {...form.register("message")} placeholder="Enter a message" />
         <Error message={form.formState.errors.message?.message} />
       </Label>
+
+      <Controller
+        control={form.control}
+        name="acceptTerms"
+        render={({ field }) => (
+          <div className="flex flex-col gap-2">
+            <div className="items-top flex space-x-2">
+              <Checkbox
+                id="terms1"
+                checked={field.value}
+                onCheckedChange={() => {
+                  field.onChange(!field.value);
+                }}
+              />
+              <div className="grid gap-1.5 leading-none">
+                <label
+                  htmlFor="terms1"
+                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                >
+                  Accept terms and conditions
+                </label>
+                <p className="text-sm text-muted-foreground">
+                  You agree to our Terms of Service and Privacy Policy.
+                </p>
+              </div>
+            </div>
+
+            {/* @ts-expect-error - The error message for acceptTerms is nested for some reason. */}
+            <Error message={form.formState.errors.acceptTerms?.acceptTerms.message} />
+          </div>
+        )}
+      />
 
       <button
         type="submit"

@@ -50,6 +50,14 @@ export const capitalSection = {
       label: "About",
       path: "/capital",
     },
+    {
+      label: "Services",
+      path: "/capital/services",
+    },
+    {
+      label: "Contact Us",
+      path: "/capital/contact-us",
+    },
   ],
 } as const satisfies Section<"capital">;
 
@@ -71,4 +79,4 @@ export const impactSection = {
 
 export const logos = [investmentsSection.logo, capitalSection.logo, impactSection.logo] as const;
 
-export const sections = [investmentsSection] as const;
+export const sections = [investmentsSection, capitalSection] as const;

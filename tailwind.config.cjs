@@ -21,6 +21,10 @@ module.exports = {
           DEFAULT: "hsl(var(--investments-primary))",
           muted: "hsl(var(--investments-muted))",
         },
+        capital: {
+          DEFAULT: "hsl(var(--capital-primary))",
+          muted: "hsl(var(--capital-muted))",
+        },
         secondary: {
           foreground: "hsl(var(--secondary-foreground))",
         },

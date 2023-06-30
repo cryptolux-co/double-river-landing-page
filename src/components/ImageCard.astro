@@ -1,0 +1,31 @@
+---
+import { cn } from "@utils/cn";
+export type Props = {
+  reverse?: boolean;
+  imageSrc: string;
+  imageAlt: string;
+  title: string;
+};
+const reverse = Astro.props.reverse ?? false;
+---
+
+<div
+  class={cn(
+    "flex flex-col-reverse justify-center items-center gap-8",
+    reverse ? "md:flex-row-reverse" : "md:flex-row",
+  )}
+>
+  <img
+    src={Astro.props.imageSrc}
+    alt={Astro.props.imageAlt}
+    class="pointer-events-none w-full select-none md:w-2/5"
+  />
+
+  <div class="flex flex-col gap-1">
+    <h1 class="font-bold text-2xl text-secondary-foreground tracking-wider">{Astro.props.title}</h1>
+
+    <p class="text-secondary-foreground">
+      <slot name="description" />
+    </p>
+  </div>
+</div>

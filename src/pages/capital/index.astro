@@ -1,0 +1,26 @@
+---
+import SectionLayout from "@layouts/SectionLayout.astro";
+import ImageCardsContainer from "@components/ImageCardsContainer.astro";
+import ImageCard from "@components/ImageCard.astro";
+import Footer from "../../components/Footer.astro";
+---
+
+<SectionLayout>
+  <ImageCardsContainer>
+    <ImageCard
+      title="About Us"
+      imageSrc="/capital/photo-about-us-dr-capital.jpg"
+      imageAlt="About Us"
+    >
+      <p class="text-secondary-foreground" slot="description">
+        Double River Capital serves as a trusted bridge between investors and great investment
+        opportunities. With a focus on professionalism and building trust, we specialize in capital
+        placement, connecting potential with resources. Our tailored solutions aim to facilitate
+        financial growth for individuals and institutions, underpinned by exceptional service and
+        the highest standards of integrity.
+      </p>
+    </ImageCard>
+  </ImageCardsContainer>
+
+  <Footer section="capital" slot="footer" />
+</SectionLayout>

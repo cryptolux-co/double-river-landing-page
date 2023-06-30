@@ -1,0 +1,38 @@
+---
+import SectionLayout from "@layouts/SectionLayout.astro";
+import ImageCard from "@components/ImageCard.astro";
+import ImageCardsContainer from "../../components/ImageCardsContainer.astro";
+import Footer from "../../components/Footer.astro";
+---
+
+<SectionLayout>
+  <ImageCardsContainer>
+    <ImageCard
+      title="Multi-strategy"
+      imageSrc="/investment/photo-multi-strategy-dr-investment-.jpg"
+      imageAlt="About Us"
+    >
+      <p class="text-secondary-foreground" slot="description">
+        Good opportunities are everywhere, and we don’t put limits on ourselves. We are just as
+        comfortable making investments in small Vietnamese companies as we are investing in the
+        largest global names. And whether those opportunities are in public shares, derivatives or
+        the FX markets, we are there.
+      </p>
+    </ImageCard>
+
+    <ImageCard
+      title="Systematic"
+      imageSrc="/investment/photo-systematic-dr-investment.jpg"
+      imageAlt="About Us"
+      reverse={true}
+    >
+      <p class="text-secondary-foreground" slot="description">
+        Our investment strategies are quantitative, well- tested, and unemotional. Whether based on
+        novel deep learning algorithms or tried-and-tested statistical models, our systems identify
+        various kinds of market inefficiencies.
+      </p>
+    </ImageCard>
+  </ImageCardsContainer>
+
+  <Footer section="investments" slot="footer" />
+</SectionLayout>

@@ -1,12 +1,11 @@
 ---
 import SectionLayout from "@layouts/SectionLayout.astro";
 import { ContactUs } from "@components/contact-us.tsx";
+import Footer from "../../components/Footer.astro";
 ---
 
 <SectionLayout>
   <ContactUs client:load section="investment" />
 
-  <div class="text-center py-6" slot="footer">
-    <span class="text-investments">2023 Double River Investments, LLC</span>
-  </div>
+  <Footer section="investments" slot="footer" />
 </SectionLayout>

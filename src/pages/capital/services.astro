@@ -1,0 +1,37 @@
+---
+import SectionLayout from "@layouts/SectionLayout.astro";
+import ImageCard from "@components/ImageCard.astro";
+import ImageCardsContainer from "@components/ImageCardsContainer.astro";
+import Footer from "../../components/Footer.astro";
+---
+
+<SectionLayout>
+  <ImageCardsContainer>
+    <ImageCard
+      title="Deal Sourcing"
+      imageSrc="/capital/photo-deal-sourcing-dr-capital.jpg"
+      imageAlt="Deal Sourcing"
+    >
+      <p class="text-secondary-foreground" slot="description">
+        We leverage our vast network and market insights to identify promising investment
+        opportunities across various sectors and asset classes.
+      </p>
+    </ImageCard>
+
+    <ImageCard
+      title="Fundraising and Capital Introduction"
+      imageSrc="/capital/photo-capital-introduction-dr-capital.jpg"
+      imageAlt="Fundraising and Capital Introduction"
+      reverse={true}
+    >
+      <p class="text-secondary-foreground" slot="description">
+        For investment opportunity providers, we offer support in fundraising efforts by introducing
+        them to our network of potential investors. We assist in creating compelling investment
+        propositions, preparing marketing materials, and facilitating connections to the right
+        capital sources.
+      </p>
+    </ImageCard>
+  </ImageCardsContainer>
+
+  <Footer section="capital" slot="footer" />
+</SectionLayout>

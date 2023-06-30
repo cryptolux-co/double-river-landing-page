@@ -1,24 +1,25 @@
 ---
 import SectionLayout from "@layouts/SectionLayout.astro";
+import ImageCard from "@components/ImageCard.astro";
+import ImageCardsContainer from "@components/ImageCardsContainer.astro";
+import Footer from "../../components/Footer.astro";
 ---
 
 <SectionLayout>
-  <div class="flex justify-center items-center gap-8">
-    <img src="/investment/photo-about-us-dr-investment.jpg" alt="About Us" class="w-2/5" />
-
-    <div class="flex flex-col gap-1">
-      <h1 class="font-bold text-2xl text-secondary-foreground tracking-wider">About Us</h1>
-
-      <p class="text-secondary-foreground">
+  <ImageCardsContainer>
+    <ImageCard
+      imageSrc="/investment/photo-about-us-dr-investment.jpg"
+      imageAlt="Our Approach"
+      title="Our Approach"
+    >
+      <p class="text-secondary-foreground" slot="description">
         For those in search of alpha, Double River Investments offers a quantitatively driven
         approach, leveraging advanced models and systematic strategies to consistently deliver
         results. We believe in the power of technology and data-driven insights, grounding our
         investment decisions in thorough analysis and rigorous risk management techniques.
       </p>
-    </div>
-  </div>
+    </ImageCard>
+  </ImageCardsContainer>
 
-  <div class="text-center py-6" slot="footer">
-    <span class="text-investments">2023 Double River Investments, LLC</span>
-  </div>
+  <Footer section="investments" slot="footer" />
 </SectionLayout>

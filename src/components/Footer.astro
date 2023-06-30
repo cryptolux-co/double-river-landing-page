@@ -1,0 +1,17 @@
+---
+import { cn } from "../utils/cn";
+export type Props = {
+  section: "investments" | "capital" | "impact";
+};
+const { section } = Astro.props;
+---
+
+<div class="text-center py-6">
+  <span
+    class={cn({
+      "text-capital": section === "capital",
+      "text-investments": section === "investments",
+      "text-impact": section === "impact",
+    })}>2023 Double River Investments, LLC</span
+  >
+</div>

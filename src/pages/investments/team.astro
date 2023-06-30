@@ -1,0 +1,41 @@
+---
+import SectionLayout from "@layouts/SectionLayout.astro";
+import ImageCard from "../../components/ImageCard.astro";
+import ImageCardsContainer from "../../components/ImageCardsContainer.astro";
+import Footer from "../../components/Footer.astro";
+---
+
+<SectionLayout>
+  <ImageCardsContainer>
+    <ImageCard
+      title="Culture"
+      imageSrc="/investment/photo-culture-dr-investment.jpg"
+      imageAlt="Culture"
+    >
+      <p class="text-secondary-foreground" slot="description">
+        Our team covers multiple disciplines from Computer Science and Mathematics to Econometrics
+        and Statistics, with backgrounds ranging from years in the industry to current students. We
+        work remote, cover multiple time zones, and love what we do. The Double River culture is all
+        about trust, being curious, and working together.
+      </p>
+    </ImageCard>
+
+    <ImageCard
+      title="Openings"
+      imageSrc="/investment/photo-openings-dr-investment.jpg"
+      imageAlt="Culture"
+      reverse={true}
+    >
+      <div class="text-secondary-foreground flex flex-col gap-3" slot="description">
+        <p>
+          If you feel you share the same passion for problem solving and the needed proactive work
+          ethic, take a look at our current openings.
+        </p>
+
+        <p>Alternatively, you may reach out to us directly at hiring@doubleriver.com</p>
+      </div>
+    </ImageCard>
+  </ImageCardsContainer>
+
+  <Footer section="investments" slot="footer" />
+</SectionLayout>
