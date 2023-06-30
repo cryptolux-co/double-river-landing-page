@@ -14,10 +14,13 @@ import { logos } from "@lib/sections";
       </h1>
     </div>
 
-    <div class="flex flex-wrap items-center gap-8 justify-center">
+    <div class="flex flex-wrap gap-8 justify-center">
       {
         logos.map(({ name, src, alt, path }) => (
-          <a class="flex flex-col items-center justify-center gap-2" href={path}>
+          <a
+            class="flex flex-1 flex-col items-center justify-center gap-2 rounded border border-border p-4 shadow transition-shadow duration-200 hover:shadow-lg"
+            href={path}
+          >
             <img src={src} alt={alt} class="pointer-events-none w-12 select-none md:w-20 lg:w-32" />
 
             <div class="flex flex-col -space-y-1.5 text-center">
