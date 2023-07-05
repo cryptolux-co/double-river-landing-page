@@ -18,7 +18,7 @@ import { logos } from "@lib/sections";
       {
         logos.map(({ name, src, alt, path }) => (
           <a
-            class="flex flex-1 flex-col items-center justify-center gap-2 rounded border border-border p-4 shadow transition-shadow duration-200 hover:shadow-lg"
+            class="relative flex flex-1 flex-col items-center justify-center gap-2 rounded border border-border p-4 shadow transition-shadow duration-200 hover:shadow-lg"
             href={path}
           >
             <img src={src} alt={alt} class="pointer-events-none w-12 select-none md:w-20 lg:w-32" />
@@ -29,6 +29,10 @@ import { logos } from "@lib/sections";
               </span>
 
               <span class="small-caps font-cambriaMath text-sm tracking-extrawidest">{name}</span>
+            </div>
+
+            <div class="rounded bg-gray-200 px-4 py-1 text-center text-xs font-medium tracking-wide text-gray-700">
+              Learn More
             </div>
           </a>
         ))
