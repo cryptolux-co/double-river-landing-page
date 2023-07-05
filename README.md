@@ -6,6 +6,12 @@ Run the following to use the correct node version:
 nvm use
 ```
 
+Install `pnpm` globally:
+
+```bash
+npm install -g pnpm
+```
+
 Install dependencies:
 
 ```bash
