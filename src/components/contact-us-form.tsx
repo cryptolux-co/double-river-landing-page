@@ -1,13 +1,13 @@
 import type React from "react";
-import { Controller, useForm } from "react-hook-form";
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Label } from "@components/label";
-import { Input } from "@components/input";
-import { Textarea } from "@components/textarea";
-import { cn } from "@utils/cn";
-import { Checkbox } from "@components/checkbox";
-import { PaperPlaneIcon } from "@radix-ui/react-icons";
+import {Controller, useForm} from "react-hook-form";
+import {z} from "zod";
+import {zodResolver} from "@hookform/resolvers/zod";
+import {Label} from "@components/label";
+import {Input} from "@components/input";
+import {Textarea} from "@components/textarea";
+import {cn} from "@utils/cn";
+import {Checkbox} from "@components/checkbox";
+import {PaperPlaneIcon} from "@radix-ui/react-icons";
 
 const Error: React.FC<
   Omit<React.ComponentPropsWithoutRef<"span">, "children"> & {
@@ -76,9 +76,17 @@ export const ContactUsForm: React.FC<Props> = ({ section }) => {
     resolver: zodResolver(formSchema),
   });
 
+  function onSubmit(data: FormSchema): void {
+    window.location.href = `mailto:support@example.com?subject=${encodeURIComponent(
+        data.subject,
+    )}&body=${encodeURIComponent(
+        `Hi there,\n\nMy name is ${data.fullName}. I wanted to get in touch regarding ${data.subject}.\n\n${data.message}\n\nBest regards,\n${data.fullName}`,
+    )}`;
+  }
+
   return (
     <form
-      onSubmit={form.handleSubmit((data) => console.log(data))}
+      onSubmit={form.handleSubmit(onSubmit)}
       className="mx-auto flex w-11/12 flex-col gap-4 md:w-1/2"
     >
       <span className="small-caps text-2xl text-gray-900">Contact us</span>
