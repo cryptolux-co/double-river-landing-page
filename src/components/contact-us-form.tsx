@@ -67,6 +67,12 @@ type Props = {
   section: "investment" | "capital" | "impact";
 };
 
+const emails = {
+  investment: "investment@doubleriver.com",
+  capital: "capital@doubleriver.com",
+  impact: "impact@doubleriver.com",
+} satisfies Record<Props["section"], `${string}@doubleriver.com`>;
+
 export const ContactUsForm: React.FC<Props> = ({ section }) => {
   const form = useForm<FormSchema>({
     defaultValues: {
@@ -77,7 +83,7 @@ export const ContactUsForm: React.FC<Props> = ({ section }) => {
   });
 
   function onSubmit(data: FormSchema): void {
-    window.location.href = `mailto:support@example.com?subject=${encodeURIComponent(
+    window.location.href = `mailto:${emails[section]}?subject=${encodeURIComponent(
       data.subject,
     )}&body=${encodeURIComponent(
       `Hi there,\n\nMy name is ${data.fullName}. I wanted to get in touch regarding ${data.subject}.\n\n${data.message}\n\nBest regards,\n${data.fullName}`,
