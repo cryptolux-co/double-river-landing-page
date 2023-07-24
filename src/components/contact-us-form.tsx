@@ -1,13 +1,13 @@
 import type React from "react";
-import {Controller, useForm} from "react-hook-form";
-import {z} from "zod";
-import {zodResolver} from "@hookform/resolvers/zod";
-import {Label} from "@components/label";
-import {Input} from "@components/input";
-import {Textarea} from "@components/textarea";
-import {cn} from "@utils/cn";
-import {Checkbox} from "@components/checkbox";
-import {PaperPlaneIcon} from "@radix-ui/react-icons";
+import { Controller, useForm } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Label } from "@components/label";
+import { Input } from "@components/input";
+import { Textarea } from "@components/textarea";
+import { cn } from "@utils/cn";
+import { Checkbox } from "@components/checkbox";
+import { PaperPlaneIcon } from "@radix-ui/react-icons";
 
 const Error: React.FC<
   Omit<React.ComponentPropsWithoutRef<"span">, "children"> & {
@@ -78,9 +78,9 @@ export const ContactUsForm: React.FC<Props> = ({ section }) => {
 
   function onSubmit(data: FormSchema): void {
     window.location.href = `mailto:support@example.com?subject=${encodeURIComponent(
-        data.subject,
+      data.subject,
     )}&body=${encodeURIComponent(
-        `Hi there,\n\nMy name is ${data.fullName}. I wanted to get in touch regarding ${data.subject}.\n\n${data.message}\n\nBest regards,\n${data.fullName}`,
+      `Hi there,\n\nMy name is ${data.fullName}. I wanted to get in touch regarding ${data.subject}.\n\n${data.message}\n\nBest regards,\n${data.fullName}`,
     )}`;
   }
 
