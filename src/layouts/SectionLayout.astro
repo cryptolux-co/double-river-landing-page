@@ -1,11 +1,18 @@
 ---
 import MainLayout from "@layouts/MainLayout.astro";
 import { pages, sections } from "@lib/sections";
-import { NavLinks } from "@components/nav-links";
+import { cn } from "../utils/cn";
+
+const normalizePath = (path: string): string => {
+  // Remove any trailing slashes
+  path = path.replace(/\/+$/, "");
+  return path.charAt(0) === "/" ? path : `/${path}`;
+};
 
 const url = new URL(Astro.request.url);
-const currentSection = sections.find(({ path }) => url.pathname.startsWith(path));
-const currentPage = pages.find(({ path }) => url.pathname === path);
+const currentPath = url.pathname;
+const currentSection = sections.find(({ path }) => currentPath.startsWith(path));
+const currentPage = pages.find(({ path }) => normalizePath(path) === normalizePath(currentPath));
 ---
 
 <MainLayout title={`Double River - ${currentSection?.label}`}>
@@ -19,7 +26,7 @@ const currentPage = pages.find(({ path }) => url.pathname === path);
         />
 
         <div class="flex items-center justify-center flex-col">
-          <span class="small-caps font-cambriaMath text-xl sm:text-2xl tracking-widest"
+          <span class="small-caps font-cambriaMath text-xl sm:text-2xl trackingc-widest"
             >Double River</span
           >
           <span class="small-caps font-cambriaMath text-sm tracking-extrawidest">
@@ -28,7 +35,40 @@ const currentPage = pages.find(({ path }) => url.pathname === path);
         </div>
       </a>
 
-      <NavLinks client:only="react" />
+      <div class="flex items-center justify-center gap-2">
+        {
+          currentSection?.pages.map((page) => {
+            const isInvestments = currentSection?.path === "/investments";
+            const isCapital = currentSection?.path === "/capital";
+            const isImpact = currentSection?.path === "/impact";
+            console.log({
+              currentPagePath: currentPage?.path,
+              page,
+              isInvestments,
+              isCapital,
+              isImpact,
+            });
+            return (
+              <a
+                class={cn(
+                  "rounded-[0.5rem] px-2.5 py-1 text-center text-sm font-medium sm:text-lg",
+                  {
+                    "text-investments": isInvestments,
+                    "bg-investments-muted": currentPage?.path === page.path && isInvestments,
+                    "text-capital": isCapital,
+                    "bg-capital-muted": currentPage?.path === page.path && isCapital,
+                    "text-impact": isImpact,
+                    "bg-impact-muted": currentPage?.path === page.path && isImpact,
+                  },
+                )}
+                href={page.path}
+              >
+                {page.label}
+              </a>
+            );
+          })
+        }
+      </div>
     </div>
 
     <div class="py-12 flex-grow">
