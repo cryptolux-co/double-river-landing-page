@@ -1,7 +1,7 @@
 ---
 import MainLayout from "@layouts/MainLayout.astro";
-import { cn } from "@utils/cn";
 import { pages, sections } from "@lib/sections";
+import { NavLinks } from "@components/nav-links";
 
 const url = new URL(Astro.request.url);
 const currentSection = sections.find(({ path }) => url.pathname.startsWith(path));
@@ -28,33 +28,7 @@ const currentPage = pages.find(({ path }) => url.pathname === path);
         </div>
       </a>
 
-      <div class="flex items-center justify-center gap-2">
-        {
-          currentSection?.pages.map(({ label, path }) => {
-            return (
-              <a
-                class={cn(
-                  "rounded-[0.5rem] px-2.5 py-1 text-center text-sm font-medium sm:text-lg",
-                  {
-                    "text-investments": currentSection?.path === "/investments",
-                    "bg-investments-muted":
-                      currentPage?.path === path && currentSection?.path === "/investments",
-                    "text-capital": currentSection?.path === "/capital",
-                    "bg-capital-muted":
-                      currentPage?.path === path && currentSection?.path === "/capital",
-                    "text-impact": currentSection?.path === "/impact",
-                    "bg-impact-muted":
-                      currentPage?.path === path && currentSection?.path === "/impact",
-                  },
-                )}
-                href={path}
-              >
-                {label}
-              </a>
-            );
-          })
-        }
-      </div>
+      <NavLinks client:only="react" />
     </div>
 
     <div class="py-12 flex-grow">
