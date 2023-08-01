@@ -142,7 +142,7 @@ export const ContactUsForm: React.FC<Props> = ({ section }) => {
         name="acceptTerms"
         render={({ field }) => (
           <div className="flex flex-col gap-2">
-            <div className="items-top flex space-x-2">
+            <div className="items-top flex gap-2">
               <Checkbox
                 id="terms1"
                 checked={field.value}
