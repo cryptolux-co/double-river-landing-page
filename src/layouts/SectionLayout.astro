@@ -41,13 +41,6 @@ const currentPage = pages.find(({ path }) => normalizePath(path) === normalizePa
             const isInvestments = currentSection?.path === "/investments";
             const isCapital = currentSection?.path === "/capital";
             const isImpact = currentSection?.path === "/impact";
-            console.log({
-              currentPagePath: currentPage?.path,
-              page,
-              isInvestments,
-              isCapital,
-              isImpact,
-            });
             return (
               <a
                 class={cn(
