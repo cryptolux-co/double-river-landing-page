@@ -5,7 +5,7 @@ import Footer from "@components/Footer.astro";
 ---
 
 <SectionLayout>
-  <ContactUsForm client:load section="impact" />
+  <ContactUsForm client:only="react" section="impact" />
 
   <Footer section="impact" slot="footer" />
 </SectionLayout>

@@ -8,8 +8,9 @@ import { Textarea } from "@components/textarea";
 import { cn } from "@utils/cn";
 import { Checkbox } from "@components/checkbox";
 import { PaperPlaneIcon } from "@radix-ui/react-icons";
+import { QueryClient, QueryClientProvider, useMutation } from "react-query";
 
-const Error: React.FC<
+const ErrorMessage: React.FC<
   Omit<React.ComponentPropsWithoutRef<"span">, "children"> & {
     message: unknown;
   }
@@ -73,7 +74,27 @@ const emails = {
   impact: "impact@doubleriver.com",
 } satisfies Record<Props["section"], `${Props["section"]}@doubleriver.com`>;
 
-export const ContactUsForm: React.FC<Props> = ({ section }) => {
+export const BaseContactUsForm: React.FC<Props> = ({ section }) => {
+  const sendForm = useMutation({
+    retry: false,
+    mutationFn: (data: Omit<FormSchema, "acceptTerms">) => {
+      try {
+        return fetch("/", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+          body: new URLSearchParams(data).toString(),
+        });
+      } catch (error: unknown) {
+        if (error instanceof Error) {
+          throw new Error(error.message);
+        }
+        throw new Error("There was an error sending your message. Please try again later.");
+      }
+    },
+  });
+
   const form = useForm<FormSchema>({
     defaultValues: {
       acceptTerms: false,
@@ -82,12 +103,8 @@ export const ContactUsForm: React.FC<Props> = ({ section }) => {
     resolver: zodResolver(formSchema),
   });
 
-  function onSubmit(data: FormSchema): void {
-    window.location.href = `mailto:${emails[section]}?subject=${encodeURIComponent(
-      data.subject,
-    )}&body=${encodeURIComponent(
-      `Hi there,\n\nMy name is ${data.fullName}. I wanted to get in touch regarding ${data.subject}.\n\n${data.message}\n\nBest regards,\n${data.fullName}`,
-    )}`;
+  function onSubmit({ acceptTerms, ...data }: FormSchema): void {
+    sendForm.mutate(data);
   }
 
   return (
@@ -104,7 +121,7 @@ export const ContactUsForm: React.FC<Props> = ({ section }) => {
         </div>
 
         <Input {...form.register("fullName")} type="text" placeholder="Enter your name" />
-        <Error message={form.formState.errors.fullName?.message} />
+        <ErrorMessage message={form.formState.errors.fullName?.message} />
       </Label>
 
       <Label>
@@ -114,7 +131,7 @@ export const ContactUsForm: React.FC<Props> = ({ section }) => {
         </div>
 
         <Input {...form.register("email")} type="email" placeholder="Enter your email address" />
-        <Error message={form.formState.errors.email?.message} />
+        <ErrorMessage message={form.formState.errors.email?.message} />
       </Label>
 
       <Label>
@@ -124,7 +141,7 @@ export const ContactUsForm: React.FC<Props> = ({ section }) => {
         </div>
 
         <Input {...form.register("subject")} type="text" placeholder="Enter a subject" />
-        <Error message={form.formState.errors.subject?.message} />
+        <ErrorMessage message={form.formState.errors.subject?.message} />
       </Label>
 
       <Label>
@@ -134,7 +151,7 @@ export const ContactUsForm: React.FC<Props> = ({ section }) => {
         </div>
 
         <Textarea {...form.register("message")} placeholder="Enter a message" />
-        <Error message={form.formState.errors.message?.message} />
+        <ErrorMessage message={form.formState.errors.message?.message} />
       </Label>
 
       <Controller
@@ -164,7 +181,7 @@ export const ContactUsForm: React.FC<Props> = ({ section }) => {
             </div>
 
             {/* @ts-expect-error - The error message for acceptTerms is nested for some reason. */}
-            <Error message={form.formState.errors.acceptTerms?.acceptTerms.message} />
+            <ErrorMessage message={form.formState.errors.acceptTerms?.acceptTerms.message} />
           </div>
         )}
       />
@@ -178,10 +195,29 @@ export const ContactUsForm: React.FC<Props> = ({ section }) => {
             "bg-[hsl(52,94%,50%)] text-black hover:bg-[hsl(52,93%,47%)]": section === "capital",
             "bg-[hsl(148,26%,30%)] hover:bg-[hsl(148,26%,27%)]": section === "impact",
           },
+          (sendForm.isLoading || sendForm.isSuccess) && "cursor-not-allowed opacity-50",
         )}
+        disabled={sendForm.isLoading || sendForm.isSuccess}
       >
-        Send <PaperPlaneIcon className="h-4 w-4" />
+        {sendForm.isLoading
+          ? "Sending..."
+          : sendForm.isSuccess
+          ? "Sent!"
+          : sendForm.isError
+          ? "Error!"
+          : "Send"}
+        <PaperPlaneIcon className="h-4 w-4" />
       </button>
     </form>
+  );
+};
+
+export const ContactUsForm: React.FC<Props> = ({ section }) => {
+  const queryClient = new QueryClient();
+
+  return (
+    <QueryClientProvider client={queryClient}>
+      <BaseContactUsForm section={section} />
+    </QueryClientProvider>
   );
 };
