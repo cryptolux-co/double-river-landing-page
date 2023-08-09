@@ -77,15 +77,20 @@ const emails = {
 export const BaseContactUsForm: React.FC<Props> = ({ section }) => {
   const sendForm = useMutation({
     retry: false,
-    mutationFn: (data: Omit<FormSchema, "acceptTerms">) => {
+    mutationFn: async (data: Omit<FormSchema, "acceptTerms">) => {
       try {
-        return fetch("/", {
+        const res = await fetch("/", {
           method: "POST",
           headers: {
             "Content-Type": "application/x-www-form-urlencoded",
           },
           body: new URLSearchParams(data).toString(),
         });
+
+        if (!res.ok)
+          throw new Error("There was an error sending your message. Please try again later.");
+
+        return await res.json();
       } catch (error: unknown) {
         if (error instanceof Error) {
           throw new Error(error.message);
