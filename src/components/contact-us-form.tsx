@@ -93,7 +93,7 @@ export const BaseContactUsForm: React.FC<Props> = ({ section }) => {
         if (!res.ok)
           throw new Error("There was an error sending your message. Please try again later.");
 
-        return await res.json();
+        return res;
       } catch (error: unknown) {
         if (error instanceof Error) {
           throw new Error(error.message);
@@ -205,7 +205,7 @@ export const BaseContactUsForm: React.FC<Props> = ({ section }) => {
           },
           (sendForm.isLoading || sendForm.isSuccess) && "cursor-not-allowed opacity-50",
         )}
-        disabled={sendForm.isLoading || sendForm.isSuccess}
+        disabled={sendForm.isLoading || sendForm.isSuccess || sendForm.isError}
       >
         {sendForm.isLoading
           ? "Sending..."
